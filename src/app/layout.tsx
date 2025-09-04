@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { UserProvider } from "@/context/UserProvider/UserProvider";
 
 export const metadata: Metadata = {
   title: "Delivery app",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className="flex justify-center p-4">{children}</body>
+      <body className="flex justify-center p-4">
+        <UserProvider>{children}</UserProvider>
+      </body>
     </html>
   );
 }
