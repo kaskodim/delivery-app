@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/styles/globals.css";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "@/styles/theme";
+import { Roboto } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Delivery app",
   description: "Web-приложение для управления заказами",
 };
+
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto",
+});
 
 export default function RootLayout({
   children,
@@ -12,8 +23,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
-      <body className="flex justify-center p-4">{children}</body>
+    <html
+      lang="ru"
+      className={roboto.variable}
+    >
+      <body className="flex justify-center p-4">
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </AppRouterCacheProvider>
+      </body>
     </html>
   );
 }

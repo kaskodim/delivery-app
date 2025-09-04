@@ -1,3 +1,5 @@
+import { Typography } from "@mui/material";
+
 export default function Home() {
-  return <div>я начальный экран, возможно меня и не будет вовсе :\</div>;
+  return <Typography>я начальный экран, возможно меня и не будет вовсе :\</Typography>;
 }

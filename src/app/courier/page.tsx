@@ -1,7 +1,8 @@
 import React from "react";
+import { Typography } from "@mui/material";
 
 const CourierPage = () => {
-  return <div>я страница для курьера :)</div>;
+  return <Typography>я страница для курьера :)</Typography>;
 };
 
 export default CourierPage;
