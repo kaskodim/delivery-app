@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "@/styles/theme";
 import { Roboto } from "next/font/google";
+import { ThemeProvider } from "@/providers/ThemeProvider/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Delivery app",
@@ -29,7 +28,10 @@ export default function RootLayout({
     >
       <body className="flex justify-center p-4">
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          {/*// TODO: 4. Вставляем сюда наш провайдер.
+          + мы убираем MUI провайдер,
+          т.к. мы его перенесли внутрь нашего собственного*/}
+          <ThemeProvider>{children}</ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
