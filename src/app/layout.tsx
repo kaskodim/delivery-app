@@ -28,7 +28,7 @@ export default function RootLayout({
       className={roboto.variable}
     >
       <body className="flex justify-center p-4">
-        <AppRouterCacheProvider>
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>{children}</ThemeProvider>
         </AppRouterCacheProvider>
       </body>
