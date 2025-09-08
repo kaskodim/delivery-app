@@ -1,8 +1,7 @@
 "use client";
-import { createTheme } from "@mui/material/styles";
-import { ModeTheme } from "@/providers/themeContext/themeContext";
+import { createTheme, PaletteMode } from "@mui/material/styles";
 
-export const generateAppTheme = (mode: Extract<ModeTheme, "dark" | "light">) => {
+export const generateAppTheme = (mode: PaletteMode) => {
   return createTheme({
     cssVariables: true,
     typography: {
