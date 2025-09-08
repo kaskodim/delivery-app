@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "@/styles/theme";
 import { Roboto } from "next/font/google";
+import { CustomThemeProvider } from "@/providers/themeContext/CustomThemeProvider";
 
 export const metadata: Metadata = {
   title: "Delivery app",
@@ -29,7 +28,7 @@ export default function RootLayout({
     >
       <body className="flex justify-center p-4">
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <CustomThemeProvider>{children}</CustomThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

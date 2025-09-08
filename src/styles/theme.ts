@@ -1,11 +1,14 @@
 "use client";
-import { createTheme } from "@mui/material/styles";
+import { createTheme, PaletteMode } from "@mui/material/styles";
 
-const theme = createTheme({
-  cssVariables: true,
-  typography: {
-    fontFamily: "var(--font-roboto)",
-  },
-});
-
-export default theme;
+export const generateAppTheme = (mode: PaletteMode) => {
+  return createTheme({
+    cssVariables: true,
+    typography: {
+      fontFamily: "var(--font-roboto)",
+    },
+    palette: {
+      mode,
+    },
+  });
+};
