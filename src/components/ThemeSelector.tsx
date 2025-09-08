@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Button, ButtonGroup, Typography } from "@mui/material";
 import { useContextTheme } from "@/providers/themeContext/themeContext";
