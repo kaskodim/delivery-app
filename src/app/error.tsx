@@ -1,4 +1,4 @@
 "use client";
 export default function Error() {
-  return <p>Sorry, something went wrong</p>;
+  return <p>Извините, что-то пошло не так</p>;
 }
