@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Button, CircularProgress, Link, TextField, Typography } from "@mui/material";
-import { login } from "@/app/auth/login/actions";
+import { login } from "@/app/(auth)/auth/login/actions";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
