@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Typography } from "@mui/material";
-import ThemeSelector from "@/components/ThemeSelector";
+import ThemeSelector from "@/components/ThemeSelector/ThemeSelector";
 
 const ProfilePage = () => {
   return (
