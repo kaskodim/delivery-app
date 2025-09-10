@@ -37,8 +37,8 @@ function Header() {
         <Image
           src="/logo.svg"
           alt="logo"
-          width={120}
-          height={40}
+          width={201}
+          height={44}
           onClick={() => router.push("/")}
           style={{ cursor: "pointer" }}
         />

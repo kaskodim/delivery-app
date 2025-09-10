@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, PropsWithChildren, useCallback, useMemo, useState } from "react";
+import { FC, PropsWithChildren, useCallback, useMemo, useState } from "react";
 import { ModeTheme, ThemeContext, ThemePreference } from "@/providers/themeContext/themeContext";
 import { ThemeProvider } from "@mui/material/styles";
 import { generateAppTheme } from "@/styles/theme";
