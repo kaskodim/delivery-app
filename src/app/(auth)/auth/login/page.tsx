@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { login } from "@/app/(auth)/auth/login/actions";
-import { Button, Input, Typography } from "antd";
+import { Button, Input, Spin, Typography } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
@@ -29,16 +29,12 @@ const LoginPage = () => {
       </Typography.Title>
 
       <Input
-        variant="filled"
-        size={"small"}
-        required
         type="email"
         value={email}
+        required
         onChange={(e) => setEmail(e.target.value)}
       />
       <Input
-        variant="filled"
-        size={"small"}
         required
         type="password"
         value={password}
@@ -48,8 +44,10 @@ const LoginPage = () => {
       {error && <Typography.Text type={"danger"}>Неверные учетные данные для входа</Typography.Text>}
 
       {loading ? (
-        // TODO переопредилить на синий
-        <LoadingOutlined />
+        <Spin
+          indicator={<LoadingOutlined spin />}
+          size="default"
+        />
       ) : (
         <Button onClick={() => buttonAuthHandler({ email, password })}>
           <Typography.Text>Авторизоваться</Typography.Text>

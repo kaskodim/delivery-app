@@ -1,7 +1,8 @@
 import React from "react";
+import Text from "antd/es/typography/Text";
 
 const CourierPage = () => {
-  return <div>я страница для курьера :)</div>;
+  return <Text>я страница для курьера :)</Text>;
 };
 
 export default CourierPage;

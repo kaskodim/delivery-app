@@ -1,7 +1,8 @@
 import React from "react";
+import Text from "antd/es/typography/Text";
 
 const AdminPage = () => {
-  return <div>я страница сурового администратора!</div>;
+  return <Text>я страница сурового администратора!</Text>;
 };
 
 export default AdminPage;

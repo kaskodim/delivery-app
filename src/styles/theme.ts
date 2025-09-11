@@ -1,4 +1,5 @@
 "use client";
+
 import { theme, ThemeConfig } from "antd";
 
 export const generateAppTheme = (mode: "light" | "dark"): ThemeConfig => {

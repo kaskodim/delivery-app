@@ -1,20 +1,41 @@
 "use client";
 
 import React from "react";
-import { useContextTheme } from "@/providers/themeContext/themeContext";
-import { Button, Typography } from "antd";
+import { ThemePreference, useContextTheme } from "@/providers/themeContext/themeContext";
+import { Segmented, Typography } from "antd";
 
 const ThemeSelector = () => {
-  const { changeMode } = useContextTheme();
+  const { changeMode, mode } = useContextTheme();
+
+  const themeLabels: { label: string; value: ThemePreference }[] = [
+    {
+      label: "Светлая",
+      value: "light",
+    },
+    {
+      label: "Системная",
+      value: "system",
+    },
+    {
+      label: "Темная",
+      value: "dark",
+    },
+  ];
 
   return (
-    <div className="flex items-center justify-between">
-      <Typography.Text>Смена темы: </Typography.Text>
+    <div>
+      <Typography.Text>Смена темы:</Typography.Text>
 
-      {/* TODO SEGMENTED*/}
-      <Button onClick={() => changeMode("light")}>Светлая</Button>
-      <Button onClick={() => changeMode("system")}>Системная</Button>
-      <Button onClick={() => changeMode("dark")}>Темная</Button>
+      <Segmented<ThemePreference>
+        options={themeLabels.map((el) => ({
+          label: el.label,
+          value: el.value,
+        }))}
+        defaultValue={mode}
+        onChange={(value) => {
+          changeMode(value);
+        }}
+      />
     </div>
   );
 };

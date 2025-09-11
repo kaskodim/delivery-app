@@ -5,7 +5,7 @@ import { ModeTheme, ThemeContext, ThemePreference } from "@/providers/themeConte
 
 import { generateAppTheme } from "@/styles/theme";
 import { getSystemTheme } from "@/lib/getSystemTheme";
-import { ConfigProvider, theme } from "antd";
+import { ConfigProvider } from "antd";
 
 export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const [mode, setMode] = useState<ModeTheme>(getSystemTheme());

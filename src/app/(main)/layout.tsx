@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import Header from "@/components/Header/Header";
 import { Layout } from "antd";
+import HeaderComponent from "@/components/Header/HeaderComponent";
 
 const MainLayout = ({
   children,
@@ -9,10 +9,16 @@ const MainLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div>
-      {/*<Layout.Header></Layout.Header>*/}
-      <Header />
-      <Layout.Content>{children}</Layout.Content>
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <Layout.Header>
+        <HeaderComponent />
+      </Layout.Header>
+      <Layout.Content
+        className="flex p-6 justify-center"
+        style={{ flex: 1, overflow: "auto" }}
+      >
+        {children}
+      </Layout.Content>
     </div>
   );
 };

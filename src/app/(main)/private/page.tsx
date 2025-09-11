@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
+import Text from "antd/es/typography/Text";
 
 export default async function PrivatePage() {
   const supabase = await createClient();
@@ -10,5 +11,5 @@ export default async function PrivatePage() {
     redirect("auth/login");
   }
 
-  return <p>Привет {data.user.email}</p>;
+  return <Text>Привет {data.user.email}</Text>;
 }
