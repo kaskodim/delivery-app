@@ -1,13 +1,12 @@
 "use server";
 
 import React from "react";
-import { Typography } from "@mui/material";
 import ThemeSelector from "@/components/ThemeSelector/ThemeSelector";
 
 const ProfilePage = () => {
   return (
     <div className={"flex justify-between w-full"}>
-      <Typography>Страница профиля</Typography>
+      <div>Страница профиля</div>
       <ThemeSelector />
     </div>
   );

@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import Header from "@/components/Header/Header";
+import { Layout } from "antd";
 
 const MainLayout = ({
   children,
@@ -8,8 +10,9 @@ const MainLayout = ({
 }>) => {
   return (
     <div>
+      {/*<Layout.Header></Layout.Header>*/}
       <Header />
-      {children}
+      <Layout.Content>{children}</Layout.Content>
     </div>
   );
 };

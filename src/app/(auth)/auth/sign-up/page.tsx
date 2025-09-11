@@ -1,8 +1,7 @@
 import React from "react";
-import { Typography } from "@mui/material";
 
 const SignUpPage = () => {
-  return <Typography>О, а здесь Вы будете регистрироваться в приложении :)</Typography>;
+  return <div>О, а здесь Вы будете регистрироваться в приложении :)</div>;
 };
 
 export default SignUpPage;
