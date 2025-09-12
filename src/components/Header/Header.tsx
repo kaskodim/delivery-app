@@ -4,12 +4,11 @@ import React from "react";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { Avatar, Dropdown, MenuProps } from "antd";
-import { Header } from "antd/es/layout/layout";
 import Link from "next/link";
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import Image from "next/image";
 
-function HeaderComponent() {
+function Header() {
   const router = useRouter();
   const supabase = createClient();
 
@@ -17,41 +16,26 @@ function HeaderComponent() {
     {
       key: "1",
       icon: <UserOutlined />,
-      label: (
-        <Link
-          rel="noopener noreferrer"
-          href="/profile"
-        >
-          Профиль
-        </Link>
-      ),
+      label: <Link href="/profile">Профиль</Link>,
     },
     {
       key: "2",
       icon: <LogoutOutlined />,
       label: "Выйти",
+      onClick: async () => {
+        try {
+          await supabase.auth.signOut();
+          router.push("/auth/login");
+        } catch (error) {
+          console.error("Ошибка при выходе: ", error);
+        }
+      },
     },
   ];
 
-  const handleMenuClick: MenuProps["onClick"] = async ({ key }) => {
-    if (key === "2") {
-      try {
-        await supabase.auth.signOut();
-        router.push("/auth/login");
-      } catch (error) {
-        console.error("Ошибка при выходе: ", error);
-      }
-    }
-  };
-
   return (
-    <Header
+    <div
       style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -69,7 +53,7 @@ function HeaderComponent() {
       />
 
       <Dropdown
-        menu={{ items, onClick: handleMenuClick }}
+        menu={{ items }}
         placement="bottomRight"
       >
         <Avatar
@@ -80,8 +64,8 @@ function HeaderComponent() {
           KG
         </Avatar>
       </Dropdown>
-    </Header>
+    </div>
   );
 }
 
-export default HeaderComponent;
+export default Header;

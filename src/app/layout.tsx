@@ -31,7 +31,7 @@ export default function RootLayout({
       <body>
         <AntdRegistry>
           <CustomThemeProvider>
-            <Layout>{children}</Layout>
+            <Layout style={{ height: "100vh" }}>{children}</Layout>
           </CustomThemeProvider>
         </AntdRegistry>
       </body>

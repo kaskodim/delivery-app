@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { login } from "@/app/(auth)/auth/login/actions";
-import { Button, Input, Spin, Typography } from "antd";
+import { Button, Input, Typography } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
@@ -43,16 +43,14 @@ const LoginPage = () => {
 
       {error && <Typography.Text type={"danger"}>Неверные учетные данные для входа</Typography.Text>}
 
-      {loading ? (
-        <Spin
-          indicator={<LoadingOutlined spin />}
-          size="default"
-        />
-      ) : (
-        <Button onClick={() => buttonAuthHandler({ email, password })}>
-          <Typography.Text>Авторизоваться</Typography.Text>
-        </Button>
-      )}
+      <Button
+        type={"primary"}
+        icon={loading && <LoadingOutlined spin />}
+        onClick={() => buttonAuthHandler({ email, password })}
+        disabled={loading}
+      >
+        <Typography.Text>Авторизоваться</Typography.Text>
+      </Button>
 
       <Typography.Title level={5}>
         Нет аккаунта? <Link href="/auth/sign-up">Зарегистрируйтесь</Link>

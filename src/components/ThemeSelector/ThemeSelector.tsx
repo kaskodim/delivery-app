@@ -3,11 +3,12 @@
 import React from "react";
 import { ThemePreference, useContextTheme } from "@/providers/themeContext/themeContext";
 import { Segmented, Typography } from "antd";
+import { SegmentedOptions } from "antd/es/segmented";
 
 const ThemeSelector = () => {
   const { changeMode, mode } = useContextTheme();
 
-  const themeLabels: { label: string; value: ThemePreference }[] = [
+  const themeLabels: SegmentedOptions<ThemePreference> = [
     {
       label: "Светлая",
       value: "light",
@@ -27,10 +28,7 @@ const ThemeSelector = () => {
       <Typography.Text>Смена темы:</Typography.Text>
 
       <Segmented<ThemePreference>
-        options={themeLabels.map((el) => ({
-          label: el.label,
-          value: el.value,
-        }))}
+        options={themeLabels}
         defaultValue={mode}
         onChange={(value) => {
           changeMode(value);
