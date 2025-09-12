@@ -34,7 +34,7 @@ function Header() {
   ];
 
   return (
-    <div className={"flex justify-between items-center w-full box-border"}>
+    <div className={"flex justify-between items-center w-full"}>
       <Image
         src="/logo.svg"
         alt="logo"
