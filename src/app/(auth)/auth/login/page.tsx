@@ -22,7 +22,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className={"flex flex-col w-[400] gap-4"}>
+    <div className={"flex w-[400] flex-col gap-4"}>
       <Typography.Title level={4}>Авторизоваться</Typography.Title>
       <Typography.Title level={5}>
         Введите адрес электронной почты ниже, чтобы войти в свою учетную запись

@@ -9,10 +9,10 @@ const MainLayout = ({
 }>) => {
   return (
     <>
-      <AntdHeader className={"flex items-center z-[1000] top-0 sticky"}>
+      <AntdHeader className={"sticky top-0 z-[1000] flex items-center"}>
         <Header />
       </AntdHeader>
-      <Content className="flex flex-1 overflow-auto p-6 justify-center">{children}</Content>
+      <Content className="flex flex-1 justify-center overflow-auto p-6">{children}</Content>
     </>
   );
 };

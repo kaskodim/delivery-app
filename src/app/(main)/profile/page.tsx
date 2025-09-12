@@ -6,7 +6,7 @@ import Text from "antd/es/typography/Text";
 
 const ProfilePage = () => {
   return (
-    <div className={"flex justify-between w-full"}>
+    <div className={"flex w-full justify-between"}>
       <Text>Страница профиля</Text>
       <ThemeSelector />
     </div>

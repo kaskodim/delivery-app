@@ -34,7 +34,9 @@ function Header() {
   ];
 
   return (
-    <div className={"flex justify-between items-center w-full"}>
+    <div className={"flex w-full items-center justify-between"}>
+      <button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">Submit</button>
+
       <Image
         src="/logo.svg"
         alt="logo"
