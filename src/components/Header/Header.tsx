@@ -34,22 +34,14 @@ function Header() {
   ];
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        width: "100%",
-        boxSizing: "border-box",
-      }}
-    >
+    <div className={"flex justify-between items-center w-full box-border"}>
       <Image
         src="/logo.svg"
         alt="logo"
         width={201}
         height={44}
         onClick={() => router.push("/")}
-        style={{ cursor: "pointer" }}
+        className={"cursor-pointer"}
       />
 
       <Dropdown
@@ -58,7 +50,7 @@ function Header() {
       >
         <Avatar
           shape={"square"}
-          style={{ cursor: "default" }}
+          className={"cursor-default"}
           size={"large"}
         >
           KG
