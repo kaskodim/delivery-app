@@ -1,7 +1,6 @@
-"use client";
 import React from "react";
-import { Layout } from "antd";
 import Header from "@/components/Header/Header";
+import { Content, Header as AntdHeader } from "antd/es/layout/layout";
 
 const MainLayout = ({
   children,
@@ -10,7 +9,7 @@ const MainLayout = ({
 }>) => {
   return (
     <>
-      <Layout.Header
+      <AntdHeader
         style={{
           position: "sticky",
           top: 0,
@@ -20,13 +19,13 @@ const MainLayout = ({
         }}
       >
         <Header />
-      </Layout.Header>
-      <Layout.Content
+      </AntdHeader>
+      <Content
         className="flex p-6 justify-center"
         style={{ flex: 1, overflow: "auto" }}
       >
         {children}
-      </Layout.Content>
+      </Content>
     </>
   );
 };
