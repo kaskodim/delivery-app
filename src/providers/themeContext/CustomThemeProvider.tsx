@@ -2,9 +2,10 @@
 
 import { FC, PropsWithChildren, useCallback, useMemo, useState } from "react";
 import { ModeTheme, ThemeContext, ThemePreference } from "@/providers/themeContext/themeContext";
-import { ThemeProvider } from "@mui/material/styles";
+
 import { generateAppTheme } from "@/styles/theme";
 import { getSystemTheme } from "@/lib/getSystemTheme";
+import { ConfigProvider } from "antd";
 
 export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const [mode, setMode] = useState<ModeTheme>(getSystemTheme());
@@ -27,7 +28,7 @@ export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={contextValue}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ConfigProvider theme={theme}>{children}</ConfigProvider>
     </ThemeContext.Provider>
   );
 };

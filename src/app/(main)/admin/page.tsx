@@ -1,8 +1,8 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import Text from "antd/es/typography/Text";
 
 const AdminPage = () => {
-  return <Typography>я страница сурового администратора!</Typography>;
+  return <Text>я страница сурового администратора!</Text>;
 };
 
 export default AdminPage;

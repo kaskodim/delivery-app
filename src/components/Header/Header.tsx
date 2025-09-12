@@ -1,81 +1,70 @@
 "use client";
 
-import React, { useState } from "react";
-import { AppBar, Avatar, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from "@mui/material";
-import Image from "next/image";
+import React from "react";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
+import { Avatar, Dropdown, MenuProps } from "antd";
+import Link from "next/link";
+import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import Image from "next/image";
 
 function Header() {
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const router = useRouter();
   const supabase = createClient();
 
-  const menuItems: { id: string; label: string; onClick: () => void }[] = [
+  const items: MenuProps["items"] = [
     {
-      id: "Profile",
-      label: "Профиль",
-      onClick: () => {
-        router.push("/profile");
-        setAnchorElUser(null);
-      },
+      key: "1",
+      icon: <UserOutlined />,
+      label: <Link href="/profile">Профиль</Link>,
     },
     {
-      id: "exit",
+      key: "2",
+      icon: <LogoutOutlined />,
       label: "Выйти",
       onClick: async () => {
-        await supabase.auth.signOut();
-        setAnchorElUser(null);
-        router.push("/auth/login");
+        try {
+          await supabase.auth.signOut();
+          router.push("/auth/login");
+        } catch (error) {
+          console.error("Ошибка при выходе: ", error);
+        }
       },
     },
   ];
 
   return (
-    <AppBar position="sticky">
-      <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Image
-          src="/logo.svg"
-          alt="logo"
-          width={201}
-          height={44}
-          onClick={() => router.push("/")}
-          style={{ cursor: "pointer" }}
-        />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "100%",
+        boxSizing: "border-box",
+      }}
+    >
+      <Image
+        src="/logo.svg"
+        alt="logo"
+        width={201}
+        height={44}
+        onClick={() => router.push("/")}
+        style={{ cursor: "pointer" }}
+      />
 
-        <Tooltip title="Открыть настройки">
-          <IconButton
-            onClick={(event) => setAnchorElUser(event.currentTarget)}
-            sx={{ p: 0 }}
-          >
-            <Avatar
-              alt="Иванов Иван"
-              src={""}
-            >
-              ИИ
-            </Avatar>
-          </IconButton>
-        </Tooltip>
-
-        <Menu
-          id="menu-appbar"
-          anchorEl={anchorElUser}
-          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-          transformOrigin={{ vertical: "top", horizontal: "right" }}
-          open={!!anchorElUser}
-          onClose={() => setAnchorElUser(null)}
+      <Dropdown
+        menu={{ items }}
+        placement="bottomRight"
+      >
+        <Avatar
+          shape={"square"}
+          style={{ cursor: "default" }}
+          size={"large"}
         >
-          {menuItems.map((item) => (
-            <MenuItem
-              key={item.id}
-              onClick={item.onClick}
-            >
-              <Typography textAlign="center">{item.label}</Typography>
-            </MenuItem>
-          ))}
-        </Menu>
-      </Toolbar>
-    </AppBar>
+          KG
+        </Avatar>
+      </Dropdown>
+    </div>
   );
 }
 

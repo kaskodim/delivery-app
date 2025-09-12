@@ -1,8 +1,10 @@
+import "@ant-design/v5-patch-for-react-19";
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { Roboto } from "next/font/google";
 import { CustomThemeProvider } from "@/providers/themeContext/CustomThemeProvider";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { Layout } from "antd";
 
 export const metadata: Metadata = {
   title: "Delivery app",
@@ -27,9 +29,11 @@ export default function RootLayout({
       className={roboto.variable}
     >
       <body>
-        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <CustomThemeProvider>{children}</CustomThemeProvider>
-        </AppRouterCacheProvider>
+        <AntdRegistry>
+          <CustomThemeProvider>
+            <Layout style={{ height: "100vh" }}>{children}</Layout>
+          </CustomThemeProvider>
+        </AntdRegistry>
       </body>
     </html>
   );

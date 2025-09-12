@@ -1,14 +1,9 @@
 "use client";
-import { createTheme, PaletteMode } from "@mui/material/styles";
 
-export const generateAppTheme = (mode: PaletteMode) => {
-  return createTheme({
-    cssVariables: true,
-    typography: {
-      fontFamily: "var(--font-roboto)",
-    },
-    palette: {
-      mode,
-    },
-  });
+import { theme, ThemeConfig } from "antd";
+
+export const generateAppTheme = (mode: "light" | "dark"): ThemeConfig => {
+  return {
+    algorithm: mode === "dark" ? theme.darkAlgorithm : theme.defaultAlgorithm,
+  };
 };

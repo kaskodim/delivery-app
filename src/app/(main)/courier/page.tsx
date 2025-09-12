@@ -1,8 +1,8 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import Text from "antd/es/typography/Text";
 
 const CourierPage = () => {
-  return <Typography>я страница для курьера :)</Typography>;
+  return <Text>я страница для курьера :)</Text>;
 };
 
 export default CourierPage;

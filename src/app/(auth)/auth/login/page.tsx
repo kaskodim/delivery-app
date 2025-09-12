@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button, CircularProgress, Link, TextField, Typography } from "@mui/material";
 import { login } from "@/app/(auth)/auth/login/actions";
+import { Button, Input, Typography } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -21,44 +23,38 @@ const LoginPage = () => {
 
   return (
     <div className={"flex flex-col w-[400] gap-4"}>
-      <Typography variant="h5">Авторизоваться</Typography>
-      <Typography variant="h6">Введите адрес электронной почты ниже, чтобы войти в свою учетную запись</Typography>
+      <Typography.Title level={4}>Авторизоваться</Typography.Title>
+      <Typography.Title level={5}>
+        Введите адрес электронной почты ниже, чтобы войти в свою учетную запись
+      </Typography.Title>
 
-      <TextField
-        variant="filled"
-        size={"small"}
-        required
+      <Input
         type="email"
-        label="Электронная почта"
         value={email}
+        required
         onChange={(e) => setEmail(e.target.value)}
       />
-      <TextField
-        variant="filled"
-        size={"small"}
+      <Input
         required
         type="password"
-        label="Пароль"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      {error && <Typography color={"error"}>Неверные учетные данные для входа</Typography>}
+      {error && <Typography.Text type={"danger"}>Неверные учетные данные для входа</Typography.Text>}
 
-      {loading ? (
-        <CircularProgress color={"info"} />
-      ) : (
-        <Button
-          variant={"contained"}
-          onClick={() => buttonAuthHandler({ email, password })}
-        >
-          <Typography>Авторизоваться</Typography>
-        </Button>
-      )}
+      <Button
+        type={"primary"}
+        icon={loading && <LoadingOutlined spin />}
+        onClick={() => buttonAuthHandler({ email, password })}
+        disabled={loading}
+      >
+        <Typography.Text>Авторизоваться</Typography.Text>
+      </Button>
 
-      <Typography variant="h6">
+      <Typography.Title level={5}>
         Нет аккаунта? <Link href="/auth/sign-up">Зарегистрируйтесь</Link>
-      </Typography>
+      </Typography.Title>
     </div>
   );
 };

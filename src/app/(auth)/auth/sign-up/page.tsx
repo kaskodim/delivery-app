@@ -1,8 +1,8 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import Text from "antd/es/typography/Text";
 
 const SignUpPage = () => {
-  return <Typography>О, а здесь Вы будете регистрироваться в приложении :)</Typography>;
+  return <Text>О, а здесь Вы будете регистрироваться в приложении :)</Text>;
 };
 
 export default SignUpPage;
