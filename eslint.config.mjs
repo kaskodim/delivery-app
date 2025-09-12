@@ -14,15 +14,7 @@ const eslintConfig = [
     extends: ["next/core-web-vitals", "next/typescript", "prettier"],
     plugins: ["prettier"],
     rules: {
-      "prettier/prettier": [
-        "error",
-        {
-          printWidth: 120,
-          semi: true,
-          singleQuote: false,
-          singleAttributePerLine: true,
-        },
-      ],
+      "prettier/prettier": "error",
     },
   }),
   {

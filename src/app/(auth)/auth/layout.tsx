@@ -5,7 +5,7 @@ const AuthLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return <div className={"flex h-screen justify-center mt-9"}>{children}</div>;
+  return <div className={"mt-9 flex h-screen justify-center"}>{children}</div>;
 };
 
 export default AuthLayout;
