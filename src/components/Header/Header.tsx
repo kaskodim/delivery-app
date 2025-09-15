@@ -24,16 +24,18 @@ function Header() {
       key: "2",
       icon: <LogoutOutlined />,
       label: "Выйти",
-      onClick: async () => {
-        try {
-          await supabase.auth.signOut();
-          router.push("/auth/login");
-        } catch (error) {
-          notificationApi?.error({
-            message: "Ошибка при выходе: ",
-            description: `${error}`,
+      onClick: () => {
+        supabase.auth
+          .signOut()
+          .then(() => {
+            router.push("/auth/login");
+          })
+          .catch((error) => {
+            notificationApi?.error({
+              message: "Ошибка при выходе: ",
+              description: `${error}`,
+            });
           });
-        }
       },
     },
   ];
