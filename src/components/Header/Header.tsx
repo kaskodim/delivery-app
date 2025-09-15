@@ -27,7 +27,10 @@ function Header() {
       onClick: () => {
         supabase.auth
           .signOut()
-          .then(() => {
+          .then((res) => {
+            if (res.error) {
+              throw res.error;
+            }
             router.push("/auth/login");
           })
           .catch((error) => {
