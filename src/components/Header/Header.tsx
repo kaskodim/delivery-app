@@ -7,10 +7,12 @@ import { Avatar, Dropdown, MenuProps } from "antd";
 import Link from "next/link";
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import Image from "next/image";
+import { useNotificationContext } from "@/providers/notification/notificationContext";
 
 function Header() {
   const router = useRouter();
   const supabase = createClient();
+  const { notificationApi } = useNotificationContext();
 
   const items: MenuProps["items"] = [
     {
@@ -22,21 +24,27 @@ function Header() {
       key: "2",
       icon: <LogoutOutlined />,
       label: "Выйти",
-      onClick: async () => {
-        try {
-          await supabase.auth.signOut();
-          router.push("/auth/login");
-        } catch (error) {
-          console.error("Ошибка при выходе: ", error);
-        }
+      onClick: () => {
+        supabase.auth
+          .signOut()
+          .then((res) => {
+            if (res.error) {
+              throw res.error;
+            }
+            router.push("/auth/login");
+          })
+          .catch((error) => {
+            notificationApi?.error({
+              message: "Ошибка при выходе: ",
+              description: `${error}`,
+            });
+          });
       },
     },
   ];
 
   return (
     <div className={"flex w-full items-center justify-between"}>
-      <button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">Submit</button>
-
       <Image
         src="/logo.svg"
         alt="logo"

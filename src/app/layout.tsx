@@ -5,6 +5,7 @@ import { Roboto } from "next/font/google";
 import { CustomThemeProvider } from "@/providers/themeContext/CustomThemeProvider";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { Layout } from "antd";
+import NotificationProvider from "@/providers/notification/NotificationProvider";
 
 export const metadata: Metadata = {
   title: "Delivery app",
@@ -31,7 +32,9 @@ export default function RootLayout({
       <body>
         <AntdRegistry>
           <CustomThemeProvider>
-            <Layout className={"h-screen"}>{children}</Layout>
+            <NotificationProvider>
+              <Layout className={"h-screen"}>{children}</Layout>
+            </NotificationProvider>
           </CustomThemeProvider>
         </AntdRegistry>
       </body>
