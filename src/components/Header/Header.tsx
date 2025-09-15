@@ -7,10 +7,12 @@ import { Avatar, Dropdown, MenuProps } from "antd";
 import Link from "next/link";
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import Image from "next/image";
+import { useNotificationContext } from "@/providers/notification/notificationContext";
 
 function Header() {
   const router = useRouter();
   const supabase = createClient();
+  const { notificationApi } = useNotificationContext();
 
   const items: MenuProps["items"] = [
     {
@@ -27,7 +29,10 @@ function Header() {
           await supabase.auth.signOut();
           router.push("/auth/login");
         } catch (error) {
-          console.error("Ошибка при выходе: ", error);
+          notificationApi?.error({
+            message: "Ошибка при выходе: ",
+            description: `${error}`,
+          });
         }
       },
     },
