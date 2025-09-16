@@ -1,8 +1,17 @@
-import React from "react";
-import Text from "antd/es/typography/Text";
+"use client";
+
+import React, { useState } from "react";
+import RegistrationSuccessCard from "@/app/(auth)/auth/sign-up/RegistrationSuccessCard/RegistrationSuccessCard";
+import RegistrationForm from "@/app/(auth)/auth/sign-up/RegistrationForm/RegistrationForm";
 
 const SignUpPage = () => {
-  return <Text>О, а здесь Вы будете регистрироваться в приложении :)</Text>;
+  const [isShowSuccessCard, setShowSuccessCard] = useState<boolean>(false);
+
+  return (
+    <div className={"w-1/3"}>
+      {isShowSuccessCard ? <RegistrationSuccessCard /> : <RegistrationForm setShowSuccessCard={setShowSuccessCard} />}
+    </div>
+  );
 };
 
 export default SignUpPage;

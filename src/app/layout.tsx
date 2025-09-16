@@ -6,6 +6,7 @@ import { CustomThemeProvider } from "@/providers/themeContext/CustomThemeProvide
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { Layout } from "antd";
 import NotificationProvider from "@/providers/notification/NotificationProvider";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Delivery app",
